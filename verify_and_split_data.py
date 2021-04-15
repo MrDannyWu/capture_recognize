@@ -39,7 +39,7 @@ def verify(origin_dir, real_width, real_height, image_suffix):
             continue
 
         # 过滤图片标签不标准的情况
-        print(img_name)
+        # print(img_name)
         prefix, posfix = img_name.split("_")
         if prefix == "" or posfix == "":
             bad_img.append((index, img_name, "图片标签异常"))

@@ -70,6 +70,8 @@ class TestBatch(CNN):
         right = 0
 
         saver = tf.train.Saver()
+        # 测试结果错误的列表
+        error_list = []
         with tf.Session() as sess:
             saver.restore(sess, self.model_save_dir)
             s = time.time()
@@ -89,10 +91,15 @@ class TestBatch(CNN):
                 if test_text == p_text:
                     right += 1
                 else:
+                    error_list.append({'origin': test_text, 'predict': p_text})
                     pass
             e = time.time()
         rate = str(right/total * 100) + "%"
         print("测试结果： {}/{}".format(right, total))
+        if right/total < 1:
+            print("测试结果错误的有: \n" , error_list)
+        else:
+            pass
         print("{}个样本识别耗时{}秒，准确率{}".format(total, e-s, rate))
 
 

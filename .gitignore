@@ -134,6 +134,7 @@ dmypy.json
 # 数据文件
 sample/
 model/
+model_1/
 labels.json
 test.csv
 loss_test.csv
